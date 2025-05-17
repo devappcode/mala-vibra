@@ -97,9 +97,9 @@ function App() {
                             <Table stickyHeader aria-label="sticky table" sx={{borderCollapse: "collapse"}}>
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell sx={headerCellStyle}>Rank</TableCell>
-                                        <TableCell sx={headerCellStyle}>Summoner</TableCell>
                                         <TableCell sx={headerCellStyle}>Tier</TableCell>
+                                        <TableCell sx={headerCellStyle}>Summoner</TableCell>
+                                        <TableCell sx={headerCellStyle}>League</TableCell>
                                         <TableCell sx={headerCellStyle}>LP</TableCell>
                                     </TableRow>
                                 </TableHead>
