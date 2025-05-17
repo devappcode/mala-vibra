@@ -1,5 +1,4 @@
 import {CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material';
-import bg from './assets/zed-bg.jpeg';
 import Scrollbar from "react-scrollbars-custom";
 import type { LeagueData } from './models/league-data.ts'
 // import data from './data/data.json' with { type: 'json' };
@@ -38,7 +37,7 @@ function App() {
         <div className="w-full min-h-screen bg-black flex justify-center">
             <div
                 className="w-full max-w-[1594px] min-h-screen bg-cover bg-center bg-no-repeat pt-[30vh] pb-[50px] text-white text-center flex justify-center "
-                style={{backgroundImage: `url(${bg})`}}
+                style={{backgroundImage: `url('zed-bg.jpeg')`}}
             >
                 <CircularProgress/>
             </div>
@@ -56,9 +55,12 @@ function App() {
         <div className="w-full min-h-screen bg-black flex justify-center">
             <div
                 className="w-full max-w-[1594px] min-h-screen bg-cover bg-center bg-no-repeat pt-[30vh] pb-[50px] text-white text-center flex justify-center "
-                style={{backgroundImage: `url(${bg})`}}
+                style={{backgroundImage: `url('zed-bg.jpeg')`}}
             >
-                {/*<div className="w-[650px] h-[650px] overflow-auto">*/}
+                <audio autoPlay loop>
+                    <source src="/bg-music.mp3" type="audio/mpeg"/>
+                </audio>
+                <embed src="/bg-music.mp3" width="0" height="0" hidden/>
                 <Paper sx={{width: '650px', height: tableHeight, overflow: 'hidden'}}>
                     <TableContainer component={Paper} sx={{maxHeight: tableHeight, backgroundColor: 'black'}}>
                         <Scrollbar style={{height: tableHeight}}
@@ -111,11 +113,11 @@ function App() {
                                             <TableCell sx={cellStyle}>{v.tier}</TableCell>
                                             <TableCell sx={cellStyle}>{v.leaguePoints}</TableCell>
                                         </TableRow>
-                                   ))}
-                               </TableBody>
-                           </Table>
-                           </Scrollbar>
-                       </TableContainer>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </Scrollbar>
+                    </TableContainer>
 
                 </Paper>
                 {/*</div>*/}
