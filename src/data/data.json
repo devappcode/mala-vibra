@@ -1,0 +1,32 @@
+[
+  {
+    "place": 1,
+    "rank": "aaa",
+    "rankLength": 2,
+    "summoner": "ddfsfds",
+    "tier": "5343",
+    "leaguePoints": 23
+  },
+  {
+    "place": 2,
+    "rank": "aaa",
+    "summoner": "dffd",
+    "tier": "3r3",
+    "leaguePoints": 23
+  },
+  {
+    "place": 3,
+    "rank": "bbb",
+    "rankLength": 2,
+    "summoner": "dfdf",
+    "tier": "r3r3",
+    "leaguePoints": 23
+  },
+  {
+    "place": 4,
+    "rank": "bbb",
+    "summoner": "gdgd",
+    "tier": "234e",
+    "leaguePoints": 23
+  }
+]
