@@ -1,7 +1,6 @@
 import {CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material';
 import Scrollbar from "react-scrollbars-custom";
 import type { LeagueData } from './models/league-data.ts'
-// import data from './data/data.json' with { type: 'json' };
 import {useEffect, useState} from "react";
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('https://po6uyzq6ed.execute-api.us-east-2.amazonaws.com/default/Read_OP-GG'); // Replace with your API
+                const response = await fetch('https://i2bwbbjni9.execute-api.us-east-2.amazonaws.com/default/Read_S3_Summoners_list');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -50,6 +49,13 @@ function App() {
     const headerCellStyle = {backgroundColor: 'black', color: 'white', border: '1px solid #444', textAlign: 'center'};
     const cellStyle = {backgroundColor: 'black', color: 'white', border: '1px solid #444'};
     const tableHeight = '64vh';
+
+    const rowSpanMap: any = {};
+    data.forEach(row => {
+        rowSpanMap[row.rank] = (rowSpanMap[row.rank] || 0) + 1;
+    });
+
+    const rendered: any = {};
 
     return (
         <div className="w-full min-h-screen bg-black flex justify-center">
@@ -98,6 +104,7 @@ function App() {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell sx={headerCellStyle}>Tier</TableCell>
+                                        <TableCell sx={headerCellStyle}>Rank</TableCell>
                                         <TableCell sx={headerCellStyle}>Summoner</TableCell>
                                         <TableCell sx={headerCellStyle}>League</TableCell>
                                         <TableCell sx={headerCellStyle}>LP</TableCell>
@@ -106,12 +113,14 @@ function App() {
                                 <TableBody>
                                     {[...data].map((v, i) => (
                                         <TableRow key={i}>
-                                            {v.rankLength && (
-                                                <TableCell rowSpan={v.rankLength} sx={cellStyle}>{v.rank}</TableCell>
+                                            {!rendered[v.rank] && (
+                                                <TableCell rowSpan={rowSpanMap[v.rank]} sx={cellStyle}>{v.rank}</TableCell>
                                             )}
+                                            <TableCell sx={cellStyle}>{i + 1}</TableCell>
                                             <TableCell sx={cellStyle}>{v.summoner}</TableCell>
                                             <TableCell sx={cellStyle}>{v.tier}</TableCell>
                                             <TableCell sx={cellStyle}>{v.leaguePoints}</TableCell>
+                                            {rendered[v.rank] = true}
                                         </TableRow>
                                     ))}
                                 </TableBody>
