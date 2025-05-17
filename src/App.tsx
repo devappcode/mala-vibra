@@ -8,7 +8,7 @@ import {useEffect, useState} from "react";
 function App() {
     const [data, setData] = useState<LeagueData[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
 
     // const rows: LeagueData[] = data
@@ -23,7 +23,10 @@ function App() {
                 const data: LeagueData[] = await response.json();
                 setData(data);
             } catch (err) {
-                setError(err?.message);
+                if (err instanceof Error) {
+                    setError(err.message);
+                }
+                setError('Error');
             } finally {
                 setLoading(false);
             }
